@@ -22,14 +22,14 @@ module.exports = function (grunt) {
 
     sass: {
       dist: {
-        options: { sourcemap: 'none', style: 'compressed' },
+        options: { style: 'compressed' },
         files: {
           'web/style/style.min.css': 'web/style/style.scss',
           'picnic.min.css': 'src/picnic.scss'
         }
       },
       dev: {
-        options: { sourcemap: 'none', style: 'nested' },
+        options: { style: 'expanded' },
         files: {
           'picnic.css': 'src/picnic.scss'
         }
