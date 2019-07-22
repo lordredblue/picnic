@@ -1,3 +1,5 @@
+$picnic-inset-background: mix($picnic-white, #888, 75%) !default;
+
 * {
   box-sizing: inherit;
 }
@@ -47,13 +49,13 @@ a {
 code {
   padding: $picnic-separation / 2 $picnic-separation;
   font-size: .8em;
-  background: #f5f5f5;
+  background-color: $picnic-inset-background;
 }
 
 pre {
   text-align: left;
   padding: $picnic-separation / 2 $picnic-separation;
-  background: #f5f5f5;
+  background-color: $picnic-inset-background;
   border-radius: $picnic-radius;
 
   code {

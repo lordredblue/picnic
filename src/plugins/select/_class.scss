@@ -7,12 +7,13 @@ $picnic-select-padding: $picnic-separation / 2 $picnic-separation * .75 !default
 // http://dopiaza.org/tools/datauri/index.php
 $picnic-select-dropimage: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyIiBoZWlnaHQ9IjMiPjxwYXRoIGQ9Im0gMCwxIDEsMiAxLC0yIHoiLz48L3N2Zz4=' !default;
 
+$picnic-select-background: #fff !default;
 
 // Code
 %select {
 
   // Compatible with old androids
-  background: #fff url(#{ $picnic-select-dropimage }) no-repeat scroll 95% center/ 10px 15px;
+  background: $picnic-select-background url(#{ $picnic-select-dropimage }) no-repeat scroll 95% center/ 10px 15px;
 
   // Compatible with modern browsers
   background-position: calc(100% - 15px) center;
