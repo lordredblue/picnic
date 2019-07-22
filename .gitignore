@@ -3,3 +3,10 @@
 node_modules
 temp
 npm-debug.log
+
+
+web
+releases
+*.html
+*.css
+*.map

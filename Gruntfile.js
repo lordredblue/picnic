@@ -1,6 +1,7 @@
 var fs = require('fs');
 
 module.exports = function (grunt) {
+//  grunt.log.writeln(grunt.option('foo'));
   grunt.initConfig({
     jade: {
       compile: {
