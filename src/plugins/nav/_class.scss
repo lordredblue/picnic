@@ -7,6 +7,7 @@ $picnic-nav-sides: .6em !default;
 $picnic-nav-responsive: true !default;
 $picnic-nav-open-left: false !default;
 $picnic-nav-timing: .5s !default;
+$picnic-nav-background: #fff !default;
 
 // Vertical align based on
 // http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
@@ -23,7 +24,7 @@ $picnic-nav-timing: .5s !default;
   padding: 0 $picnic-nav-sides;
 
   // Make it look like a hovering bar
-  background: #fff;
+  background-color: $picnic-nav-background;
   box-shadow: $picnic-nav-shadow;
   z-index: 10000;
 

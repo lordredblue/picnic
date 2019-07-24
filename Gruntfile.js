@@ -6,7 +6,7 @@ module.exports = function (grunt) {
     jade: {
       compile: {
         files: [{
-          cwd: "web", src: "**/*.html.jade", dest: ".", expand: true, ext: ".html"
+          cwd: "Custom", src: "**/*.html.jade", dest: ".", expand: true, ext: ".html"
         }]
       }
     },
@@ -25,7 +25,7 @@ module.exports = function (grunt) {
       dist: {
         options: { style: 'compressed' },
         files: {
-          'web/style/style.min.css': 'web/style/style.scss',
+          'Custom/style/style.min.css': 'Custom/style/style.scss',
           'picnic.min.css': 'src/picnic.scss'
         }
       },
@@ -37,7 +37,7 @@ module.exports = function (grunt) {
       }
     },
 
-    copy: {
+/*    copy: {
       main: {
         files: [
           { src: 'picnic.min.css', dest: 'releases/picnic.min.css' },
@@ -45,6 +45,7 @@ module.exports = function (grunt) {
         ]
       }
     },
+*/
 
     usebanner: {
       taskName: {
@@ -59,7 +60,7 @@ module.exports = function (grunt) {
 
     watch: {
       scripts: {
-        files: [ 'package.js', 'Gruntfile.js', 'src/**/*.*', 'web/**/*.*' ],
+        files: [ 'package.js', 'Gruntfile.js', 'src/**/*.*', 'Custom/**/*.*' ],
         tasks: ['default'],
         options: { spawn: false },
       }
@@ -68,7 +69,8 @@ module.exports = function (grunt) {
     bytesize: {
       all: {
         src: [
-          'picnic.min.css'
+          'picnic.min.css',
+          'Custom/style/style.min.css'
         ]
       }
     }
@@ -81,5 +83,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-bytesize');
-  grunt.registerTask('default', ['concat', 'sass', 'usebanner', 'copy', 'jade', 'bytesize']);
+  grunt.registerTask('default', ['concat', 'sass', 'usebanner', 'jade', 'bytesize']);
 };
