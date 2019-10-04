@@ -1,87 +1,80 @@
-var fs = require('fs');
+var fs = require("fs");
 
-module.exports = function (grunt) {
-//  grunt.log.writeln(grunt.option('foo'));
+module.exports = function(grunt) {
   grunt.initConfig({
     jade: {
       compile: {
-        files: [{
-          cwd: "Custom", src: "**/*.html.jade", dest: ".", expand: true, ext: ".html"
-        }]
+        files: [
+          {
+            cwd: "web",
+            src: "**/*.html.jade",
+            dest: ".",
+            expand: true,
+            ext: ".html"
+          }
+        ]
       }
     },
 
     concat: {
-      options: { separator: '\n\n' },
+      options: { separator: "\n\n" },
       basic_and_extras: {
         files: {
-          'temp/test.html': ['src/test.html', 'src/plugins/**/test.html'],
-          'temp/readme.md': ['src/readme.md', 'src/plugins/**/readme.md']
+          "temp/test.html": ["src/test.html", "src/plugins/**/test.html"],
+          "temp/readme.md": ["src/readme.md", "src/plugins/**/readme.md"]
         }
       }
     },
 
-    sass: {
-      dist: {
-        options: { style: 'compressed' },
-        files: {
-          'Custom/style/style.min.css': 'Custom/style/style.scss',
-          'picnic.min.css': 'src/picnic.scss'
-        }
-      },
-      dev: {
-        options: { style: 'expanded' },
-        files: {
-          'picnic.css': 'src/picnic.scss'
-        }
-      }
-    },
-
-/*    copy: {
+    copy: {
       main: {
         files: [
-          { src: 'picnic.min.css', dest: 'releases/picnic.min.css' },
-          { src: 'picnic.min.css', dest: 'releases/plugins.min.css' },
+          { src: "picnic.min.css", dest: "releases/picnic.min.css" },
+          { src: "picnic.min.css", dest: "releases/plugins.min.css" }
         ]
       }
     },
-*/
 
     usebanner: {
       taskName: {
         options: {
-          position: 'top',
-          banner: '/* Picnic CSS v' + grunt.file.readJSON('package.json').version + ' http://picnicss.com/ */',
+          position: "top",
+          banner:
+            "/* Picnic CSS v" +
+            grunt.file.readJSON("package.json").version +
+            " http://picnicss.com/ */",
           linebreak: true
         },
-        files: { src: 'picnic.min.css' }
+        files: { src: "picnic.min.css" }
       }
     },
 
     watch: {
       scripts: {
-        files: [ 'package.js', 'Gruntfile.js', 'src/**/*.*', 'Custom/**/*.*' ],
-        tasks: ['default'],
-        options: { spawn: false },
+        files: ["package.js", "Gruntfile.js", "src/**/*.*", "web/**/*.*"],
+        tasks: ["default"],
+        options: { spawn: false }
       }
     },
 
     bytesize: {
       all: {
-        src: [
-          'picnic.min.css',
-          'Custom/style/style.min.css'
-        ]
+        src: ["picnic.min.css"]
       }
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-banner');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-jade');
-  grunt.loadNpmTasks('grunt-bytesize');
-  grunt.registerTask('default', ['concat', 'sass', 'usebanner', 'jade', 'bytesize']);
+  grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks("grunt-contrib-concat");
+  grunt.loadNpmTasks("grunt-banner");
+  grunt.loadNpmTasks("grunt-contrib-copy");
+  grunt.loadNpmTasks("grunt-contrib-jade");
+  grunt.loadNpmTasks("grunt-bytesize");
+  grunt.registerTask("default", [
+    "concat",
+    "usebanner",
+    "copy",
+    "jade",
+    "bytesize"
+  ]);
 };
